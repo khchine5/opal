@@ -71,6 +71,7 @@ class OpalApplication(object):
             'js/opal/services/fields_translater.js',
             'js/opal/services/referencedata.js',
             'js/opal/services/metadata.js',
+            'js/opal/services/patient_consultation_record.js',
         ],
         'opal.controllers': [
             "js/opal/controllers_module.js",
@@ -79,7 +80,6 @@ class OpalApplication(object):
             "js/opal/controllers/patient_detail.js",
             "js/opal/controllers/hospital_number.js",
             "js/opal/controllers/add_episode.js",
-            "js/opal/controllers/reopen_episode.js",
             "js/opal/controllers/edit_item.js",
             "js/opal/controllers/edit_teams.js",
             "js/opal/controllers/delete_item_confirmation.js",
