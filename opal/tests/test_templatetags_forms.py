@@ -49,8 +49,7 @@ class TestInferFromSubrecordPath(TestCase):
     def test_infer_choice_fields_from_charfield(self):
         ctx = infer_from_subrecord_field_path("FavouriteColour.name")
         choices = json.loads(ctx["lookuplist"])
-        for choice in ["purple", "blue", "yellow"]:
-            self.assertTrue(choice in choices)
+        self.assertEqual(choices, ["purple", "yellow", "blue"])
 
     def test_infer_element_name(self):
         ctx = infer_from_subrecord_field_path("Birthday.birth_date")
@@ -218,6 +217,20 @@ class DatepickerTestCase(TestCase):
         self.assertIn('is-open="form[onions + \'_open\']', rendered)
         self.assertIn('ng-focus="form[onions + \'_open\']=true"', rendered)
 
+    def test_hide(self):
+        tpl = Template(
+            '{% load forms %}{% datepicker label="hai" model="bai" hide="onions"%}'
+        )
+        rendered = tpl.render(Context({}))
+        self.assertIn('ng-hide="onions"', rendered)
+
+    def test_show(self):
+        tpl = Template(
+            '{% load forms %}{% datepicker label="hai" model="bai" hide="onions"%}'
+        )
+        rendered = tpl.render(Context({}))
+        self.assertIn('ng-hide="onions"', rendered)
+
 
 class DateTimePickerTestCase(TestCase):
     def test_generic(self):
@@ -239,6 +252,20 @@ class DateTimePickerTestCase(TestCase):
         template = Template('{% load forms %}{% datetimepicker field="Colour.name" change="something()" %}')
         rendered = template.render(Context({}))
         self.assertEqual(rendered.count("something()"), 2)
+
+    def test_hide(self):
+        tpl = Template(
+            '{% load forms %}{% datetimepicker label="hai" model="bai" hide="onions"%}'
+        )
+        rendered = tpl.render(Context({}))
+        self.assertIn('ng-hide="onions"', rendered)
+
+    def test_show(self):
+        tpl = Template(
+            '{% load forms %}{% datetimepicker label="hai" model="bai" hide="onions"%}'
+        )
+        rendered = tpl.render(Context({}))
+        self.assertIn('ng-hide="onions"', rendered)
 
 
 class RadioTestCase(TestCase):
