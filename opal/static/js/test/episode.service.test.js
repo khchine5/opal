@@ -7,7 +7,9 @@ describe('Episode', function() {
 
     beforeEach(function() {
         module('opal.services', function($provide) {
-            $provide.value('UserProfile', function(){ return profile; });
+            $provide.value('UserProfile', {
+              load: function(){ return profile; }
+            });
         });
 
         tag_hierarchy = {
@@ -197,6 +199,10 @@ describe('Episode', function() {
 
     it('should be able to get specific item', function() {
         expect(episode.getItem('diagnosis', 1).id).toEqual(102);
+    });
+
+    it('should return the name of the patient', function() {
+        expect(episode.getFullName()).toEqual('John Smith');
     });
 
     it('should know how many items it has in each column', function() {

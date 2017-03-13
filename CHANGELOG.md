@@ -1,3 +1,15 @@
+### 0.8.2 (Minor Release)
+
+### User data for the client
+
+Adds a `User` Angular service that enables applications to use user data.
+Also adds some directives to make it easy to render User names and avatars.
+
+#### Episode.getFullName()
+
+Adds a utility method to the `Episode` service that returns a human readable patient name.
+
+
 ### 0.8.1 (Minor Release)
 
 #### Cookies for the future
