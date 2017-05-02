@@ -94,10 +94,15 @@ def start_plugin(name, USERLAND):
     static.mkdir()
     jsdir = static/'js/{0}'.format(name)
     jsdir.mkdir()
+    cssdir = static/'css'
+    cssdir.mkdir()
     controllers = jsdir/'controllers'
     controllers.mkdir()
     services = jsdir/'services'
     services.mkdir()
+    # 5. Initialize git repo
+    os.system('cd {0}; git init'.format(name))
+
     write('Plugin complete at {0}'.format(reponame))
     return
 
